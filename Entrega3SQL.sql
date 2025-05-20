@@ -11,4 +11,5 @@ nro_depto INT,
 nro_calle INT,
 region VARCHAR(30),
 ciudad VARCHAR(30)
+
 );
