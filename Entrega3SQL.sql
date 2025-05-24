@@ -25,9 +25,21 @@ CREATE TABLE IF NOT EXISTS producto (
 
 CREATE TABLE IF NOT EXISTS lista_deseos (
   id_lista SERIAL PRIMARY KEY,
-  id_usuario INT NOT NULL,
-  id_producto INT NOT NULL,
+  id_usuario SERIAL NOT NULL,
+  id_producto SERIAL NOT NULL,
   total_lista INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
+CREATE TABLE IF NOT EXISTS tienda (
+  id_tienda SERIAL PRIMARY KEY,
+  id_usuario SERIAL NOT NULL,
+  nombre_t VARCHAR(30),
+  calle VARCHAR(20),
+  nro_u INT,
+  nro_calle INT,
+  region VARCHAR(30),
+  ciudad VARCHAR(30),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
