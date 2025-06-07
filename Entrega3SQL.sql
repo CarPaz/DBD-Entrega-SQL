@@ -43,3 +43,9 @@ CREATE TABLE IF NOT EXISTS tienda (
   ciudad VARCHAR(30),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
+
+CREATE TABLE IF NOT EXISTS juego_de_mesa (
+  id_juego SERIAL PRIMARY KEY,
+  id_producto SERIAL NOT NULL,
+  FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+);
