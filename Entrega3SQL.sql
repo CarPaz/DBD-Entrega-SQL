@@ -44,6 +44,31 @@ CREATE TABLE IF NOT EXISTS tienda (
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+CREATE TABLE IF NOT EXISTS valoracion (
+	id_valoracion SERIAL PRIMARY KEY,
+	id_producto SERIAL NOT NULL,
+	id_usuario SERIAL NOT NULL,
+	comentario VARCHAR(500),
+	puntuacion int,
+	valorado BOOLEAN,
+	FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+CREATE TABLE IF NOT EXISTS ventas (
+	id_ventas SERIAL PRIMARY KEY,
+	id_compra SERIAL NOT NULL,
+	id_tienda SERIAL NOT NULL,   
+	FOREIGN KEY (id_compra) REFERENCES compra(id_producto),
+	FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+);
+CREATE TABLE IF NOT EXISTS venta_tienda (
+	id_venta_tienda SERIAL PRIMARY KEY,
+	id_ventas SERIAL NOT NULL,
+	id_tienda SERIAL NOT NULL,   
+	FOREIGN KEY (id_ventas) REFERENCES ventas(id_producto),
+	FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+);
+
 CREATE TABLE IF NOT EXISTS juego_de_mesa (
   id_juego SERIAL PRIMARY KEY,
   id_producto SERIAL NOT NULL,
