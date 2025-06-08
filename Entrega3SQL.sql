@@ -33,15 +33,32 @@ CREATE TABLE IF NOT EXISTS lista_deseos (
 );
 
 CREATE TABLE IF NOT EXISTS tienda (
-  id_tienda SERIAL PRIMARY KEY,
-  id_usuario SERIAL NOT NULL,
-  nombre_t VARCHAR(30),
-  calle VARCHAR(20),
-  nro_u INT,
-  nro_calle INT,
-  region VARCHAR(30),
-  ciudad VARCHAR(30),
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+	id_tienda SERIAL PRIMARY KEY,
+	id_usuario SERIAL NOT NULL,
+	nombre_t VARCHAR(30),
+	calle VARCHAR(20),
+	nro_u INT,
+	nro_calle INT,
+	region VARCHAR(30),
+	ciudad VARCHAR(30),
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS carta (
+	id_carta SERIAL PRIMARY KEY,
+	id_producto SERIAL NOT NULL,
+	año DATE,
+	estado BOOLEAN,
+	tipo_carta VARCHAR(30),
+	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
+CREATE TABLE IF NOT EXISTS lista_producto (
+	id_lista_producto SERIAL PRIMARY KEY,
+	id_lista SERIAL NOT NULL,
+	id_producto SERIAL NOT NULL,
+	FOREIGN KEY (id_lista) REFERENCES lista_deseos(id_lista),
+	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
 CREATE TABLE IF NOT EXISTS valoracion (
@@ -54,6 +71,7 @@ CREATE TABLE IF NOT EXISTS valoracion (
 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
+
 CREATE TABLE IF NOT EXISTS ventas (
 	id_ventas SERIAL PRIMARY KEY,
 	id_compra SERIAL NOT NULL,
@@ -61,6 +79,7 @@ CREATE TABLE IF NOT EXISTS ventas (
 	FOREIGN KEY (id_compra) REFERENCES compra(id_producto),
 	FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
 );
+
 CREATE TABLE IF NOT EXISTS venta_tienda (
 	id_venta_tienda SERIAL PRIMARY KEY,
 	id_ventas SERIAL NOT NULL,
@@ -72,5 +91,5 @@ CREATE TABLE IF NOT EXISTS venta_tienda (
 CREATE TABLE IF NOT EXISTS juego_de_mesa (
   id_juego SERIAL PRIMARY KEY,
   id_producto SERIAL NOT NULL,
-  FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
