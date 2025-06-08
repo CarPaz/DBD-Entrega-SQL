@@ -93,3 +93,19 @@ CREATE TABLE IF NOT EXISTS juego_de_mesa (
   id_producto SERIAL NOT NULL,
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
+
+CREATE TABLE IF NOT EXISTS carrito(
+  id_carrito SERIAL PRIMARY KEY,
+  id_usuario SERIAL NOT NULL,
+  estado BOOLEAN NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS carrito_producto(
+  id_carrito_producto SERIAL PRIMARY KEY,
+  id_carrito SERIAL NOT NULL,
+  id_producto SERIAL NOT NULL,
+  cantidad INT NOT NULL,
+  FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito),
+  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
