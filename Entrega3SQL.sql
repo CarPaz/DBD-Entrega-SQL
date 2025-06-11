@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 CREATE TABLE IF NOT EXISTS rol (
   id_rol SERIAL PRIMARY KEY,
   administrador BOOLEAN NOT NULL,
-  vendedor BOOLEAN NOT NULL,
+  jefe_tienda BOOLEAN NOT NULL,
   cliente BOOLEAN NOT NULL,
 )
 
