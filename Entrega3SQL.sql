@@ -3,14 +3,21 @@ CREATE TABLE IF NOT EXISTS usuario (
   nombre_user VARCHAR(16) NOT NULL,
   correo_user VARCHAR(30) NOT NULL,
   clave VARCHAR(8) NOT NULL,
-  jefe_tienda BOOLEAN NOT NULL,
-  cliente BOOLEAN NOT NULL,
   calle VARCHAR(20),
   nro_depto INT,
   nro_calle INT,
   region VARCHAR(30),
-  ciudad VARCHAR(30)
+  ciudad VARCHAR(30),
+  id_rol SERIAL NOT NULL,
+  FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
+
+CREATE TABLE IF NOT EXISTS rol (
+  id_rol SERIAL PRIMARY KEY,
+  administrador BOOLEAN NOT NULL,
+  vendedor BOOLEAN NOT NULL,
+  cliente BOOLEAN NOT NULL,
+)
 
 CREATE TABLE IF NOT EXISTS producto (
   id_producto SERIAL PRIMARY KEY, 
