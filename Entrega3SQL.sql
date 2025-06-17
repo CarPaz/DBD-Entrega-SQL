@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS producto (
   url_imagen VARCHAR(100),
   descripcion VARCHAR(500),
   stock INT,
-  cant_vendida INT
 );
 
 CREATE TABLE IF NOT EXISTS medio_de_pago (
