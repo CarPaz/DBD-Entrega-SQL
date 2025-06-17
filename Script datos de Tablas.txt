@@ -1,0 +1,38 @@
+//Datos tabla producto
+
+//Datos de cartas para tabla producto
+
+INSERT INTO producto (nombre_producto, precio, url_imagen, descripcion, juegos_mesa, juegos_carta, stock)
+VALUES 
+('Pokémon TCG: Mazo Charizard EX', 24990, 'https://ejemplo.com/pokemon_charizard.jpg', 'Mazo de cartas del juego Pokémon TCG con temática Charizard.', FALSE, TRUE, 15),
+('UNO Clásico', 7990, 'https://ejemplo.com/uno.jpg', 'Juego de cartas clásico con reglas simples y diversión familiar.', FALSE, TRUE, 30),
+('Exploding Kittens', 12990, 'https://ejemplo.com/exploding_kittens.jpg', 'Juego de cartas de estrategia y humor absurdo.', FALSE, TRUE, 20),
+('Magic: The Gathering - Starter Kit 2022', 15990, 'https://ejemplo.com/mtg_starter.jpg', 'Kit de inicio de Magic: The Gathering con dos mazos listos para jugar.', FALSE, TRUE, 10),
+('Dobble', 9990, 'https://ejemplo.com/dobble.jpg', 'Juego de cartas de observación y rapidez, ideal para todas las edades.', FALSE, TRUE, 25);
+
+//Datos de juegos de mesa para tabla producto
+INSERT INTO producto (nombre_producto, precio, url_imagen, descripcion, juegos_mesa, juegos_carta, stock)
+VALUES 
+('Catan', 34990, 'https://ejemplo.com/catan.jpg', 'Juego de estrategia para colonizar una isla con recursos.', TRUE, FALSE, 12),
+('Carcassonne', 22990, 'https://ejemplo.com/carcassonne.jpg', 'Juego de colocación de losetas y conquista de territorio.', TRUE, FALSE, 18),
+('Aventureros al Tren: Europa', 29990, 'https://ejemplo.com/aventureros.jpg', 'Conecta ciudades europeas mediante rutas de tren.', TRUE, FALSE, 10),
+('Monopoly Clásico', 19990, 'https://ejemplo.com/monopoly.jpg', 'Juego clásico de bienes raíces y estrategia económica.', TRUE, FALSE, 20),
+('Dixit', 25990, 'https://ejemplo.com/dixit.jpg', 'Juego de imaginación y narración visual con cartas ilustradas.', TRUE, FALSE, 16);
+
+//Datos de cartas singles en producto 
+INSERT INTO producto (nombre_producto, precio, url_imagen, descripcion, juegos_mesa, juegos_carta, stock)
+VALUES 
+('Charizard EX - 2023', 34990, 'https://ejemplo.com/charizard_ex.jpg', 'Carta Pokémon Charizard EX edición especial 2023.', FALSE, TRUE, 3),
+('Pikachu Holo - Celebrations', 15990, 'https://ejemplo.com/pikachu_holo.jpg', 'Carta holográfica Pikachu del set Celebrations.', FALSE, TRUE, 5),
+('Mewtwo VSTAR - Crown Zenith', 19990, 'https://ejemplo.com/mewtwo_vstar.jpg', 'Carta poderosa de Mewtwo VSTAR.', FALSE, TRUE, 4),
+('Gardevoir EX SIR - 151', 26990, 'https://ejemplo.com/gardevoir_sir.jpg', 'Carta Gardevoir EX ilustración especial rara.', FALSE, TRUE, 2),
+('Blastoise Reverse-Holo - Base Set', 29990, 'https://ejemplo.com/blastoise_reverse.jpg', 'Carta Blastoise reverse-holo reimpresión del set base.', FALSE, TRUE, 1);
+
+//Datos de las cartas "single" en tabla carta
+INSERT INTO carta (id_producto, año, estado, tipo_carta)
+VALUES
+(1, '2023-06-10', 'Near Mint', 'SIR'),               -- Charizard EX
+(2, '2021-10-08', 'Lightly Played', 'Holo'),         -- Pikachu Celebrations
+(3, '2023-01-15', 'Mint', 'Ultra Rare'),             -- Mewtwo VSTAR
+(4, '2023-07-20', 'Near Mint', 'SIR'),               -- Gardevoir EX
+(5, '1999-11-01', 'Moderately Played', 'Reverse-Holo'); -- Blastoise Base Set
