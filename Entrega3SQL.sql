@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS carta (
 	id_carta SERIAL PRIMARY KEY,
 	id_producto int NOT NULL,
 	año DATE,
-	estado BOOLEAN,
+	estado VARCHAR(30),
 	tipo_carta VARCHAR(30),
 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
