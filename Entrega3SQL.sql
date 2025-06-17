@@ -44,27 +44,6 @@ CREATE TABLE IF NOT EXISTS carrito(
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
-CREATE TABLE IF NOT EXISTS compra(
-  id_compra SERIAL PRIMARY KEY,
-  id_usuario int NOT NULL,
-  id_carrito int NOT NULL,
-  id_mp int NOT NULL, 
-  fecha DATE NOT NULL,
-  total_compra INT NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-  FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito),
-  FOREIGN KEY (id_mp) REFERENCES medio_de_pago(id_mp)
-);
-
-CREATE TABLE IF NOT EXISTS lista_deseos (
-  id_lista SERIAL PRIMARY KEY,
-  id_usuario int NOT NULL,
-  id_producto int NOT NULL,
-  total_lista INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-);
-
 CREATE TABLE IF NOT EXISTS tienda (
 	id_tienda SERIAL PRIMARY KEY,
 	id_usuario int NOT NULL,
@@ -75,6 +54,29 @@ CREATE TABLE IF NOT EXISTS tienda (
 	region VARCHAR(30),
 	ciudad VARCHAR(30),
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS compra(
+  id_compra SERIAL PRIMARY KEY,
+  id_usuario int NOT NULL,
+  id_carrito int NOT NULL,
+  id_mp int NOT NULL, 
+  id_tienda int NOT NULL,
+  fecha DATE NOT NULL,
+  total_compra INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito),
+  FOREIGN KEY (id_mp) REFERENCES medio_de_pago(id_mp),
+  FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
+);
+
+CREATE TABLE IF NOT EXISTS lista_deseos (
+  id_lista SERIAL PRIMARY KEY,
+  id_usuario int NOT NULL,
+  id_producto int NOT NULL,
+  total_lista INT,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
 CREATE TABLE IF NOT EXISTS carta (
