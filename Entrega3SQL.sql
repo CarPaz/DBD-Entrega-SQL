@@ -21,11 +21,11 @@ CREATE TABLE IF NOT EXISTS usuario (
 
 CREATE TABLE IF NOT EXISTS producto (
   id_producto SERIAL PRIMARY KEY, 
-  nombre_producto VARCHAR(30),
+  id_tienda INT NOT NULL,
   precio INT, 
   url_imagen VARCHAR(100),
-  descripcion VARCHAR(500),
   stock INT,
+  FOREIGN KEY (id_tienda) REFERENCES tienda(id_tienda)
 );
 
 CREATE TABLE IF NOT EXISTS medio_de_pago (
@@ -80,7 +80,9 @@ CREATE TABLE IF NOT EXISTS lista_deseos (
 CREATE TABLE IF NOT EXISTS carta (
 	id_carta SERIAL PRIMARY KEY,
 	id_producto INT NOT NULL,
-	año DATE,
+	nombre_carta VARCHAR(30),
+  descripcion VARCHAR(500),
+  año DATE,
 	estado VARCHAR(30),
 	tipo_carta VARCHAR(30),
 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
@@ -108,6 +110,11 @@ CREATE TABLE IF NOT EXISTS valoracion (
 CREATE TABLE IF NOT EXISTS juego_de_mesa (
   id_juego SERIAL PRIMARY KEY,
   id_producto INT NOT NULL,
+  nombre_juego VARCHAR(30),
+  descripcion VARCHAR(500),
+  tipo_juego VARCHAR(30),
+  categoria VARCHAR(30),
+  edad_min INT,
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
