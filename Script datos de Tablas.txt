@@ -1,6 +1,6 @@
 //Datos tabla producto
 
-//Estos datos se ingresan como los primeros datos de las tablas 
+//Estos datos se ingresan como los primeros datos de las tablas (recordar que los id son de tipo serial)
 
 //Datos de cartas para tabla producto
 //Cartas individuales a producto
