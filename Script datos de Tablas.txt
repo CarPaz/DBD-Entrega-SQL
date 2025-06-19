@@ -4,13 +4,14 @@ VALUES
 	(TRUE,FALSE,FALSE),--admin
 	(FALSE,TRUE,FALSE),--jefe
 	(FALSE,FALSE,TRUE);--cliente
+
 -- datos tabla usuario
 INSERT INTO usuario (nombre_user, correo_user, clave, calle, nro_depto, nro_calle, region, ciudad, id_rol)
 VALUES
     ('Antonio', 'antonio1@gmail.com', 'tonito12', 'Calle BR', 31, 1942, 'Región Metropolitana', 'Santiago', 1),
     ('Pablo', 'pablo420@gmail.com', 'supra321', 'El Gabino', NULL, 13332, 'Región Metropolitana', 'Lo Barnechea', 2),
     ('Sofia', 'sofic2@gmail.com', 'cifos322', 'Peñablanca', 23, 120, 'Quinta Región', 'Viña del Mar', 2),
-	('Martin', 'martin873@gmail.com', 'martin90', 'Los Corceles', NULL, 900, 'Región Metropolitana', 'Maipú', 2),
+    ('Martin', 'martin873@gmail.com', 'martin90', 'Los Corceles', NULL, 900, 'Región Metropolitana', 'Maipú', 2),
     ('Valeria', 'vale350@gmail.com', 'valeria7', 'Avillaluz', 33, 12375, 'Región Metropolitana', 'La Pintana', 2),
     ('Luciano', 'luciano902@gmail.com', 'luci324', 'Sgto. Castañeda', 49, 13574, 'Región Metropolitana', 'La Pintana', 2),
     ('Bruno', 'bruno647@gmail.com', 'brunito3', 'Covadonga', 22, 1230, 'Quinta Región', 'Quilpué', 3),
@@ -22,6 +23,10 @@ VALUES
 -- Aqui va ir tienda
 -------------------------------
 
+--DATOS TABLA PRODUCTO
+--Estos datos se ingresan como los primeros datos de las tablas (recordar que los id son de tipo serial)
+
+--Datos de cartas individuales a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
 	(1, 34990, 'https://ejemplo.com/charizard_ex.jpg', 3),
@@ -30,11 +35,7 @@ VALUES
 	(4, 26990, 'https://ejemplo.com/gardevoir_sir.jpg', 2),
 	(5, 29990, 'https://ejemplo.com/blastoise_reverse.jpg', 1);
 
---Datos tabla producto
---Estos datos se ingresan como los primeros datos de las tablas (recordar que los id son de tipo serial)
---Datos de cartas para tabla producto
---Cartas individuales a producto
---juegos de mesa a producto
+--Juegos de mesa a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
 	(1, 34990, 'https://ejemplo.com/catan.jpg', 12),
@@ -43,14 +44,14 @@ VALUES
 	(4, 19990, 'https://ejemplo.com/monopoly.jpg', 20),
 	(4, 25990, 'https://ejemplo.com/dixit.jpg', 16);
 
---sellado de cartas a producto
+--Sellados de cartas a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
 	(1, 69990, 'https://ejemplo.com/etb_destined_rivals.jpg', 6),
 	(2, 139990, 'https://ejemplo.com/boosterbox_destined.jpg', 4),
 	(3, 89990, 'https://ejemplo.com/collection_destined.jpg', 5);
 
---cartas individuales a carta
+--Cartas individuales a carta
 INSERT INTO carta (id_producto, nombre_carta, descripcion, año, estado, tipo_carta)
 VALUES
 	(1, 'Charizard EX', 'Carta Pokémon edición especial Charizard EX 2023.', '2023-06-10', 'Near Mint', 'SIR'),
