@@ -19,6 +19,18 @@ CREATE TABLE IF NOT EXISTS usuario (
   FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
 
+CREATE TABLE IF NOT EXISTS tienda (
+	id_tienda SERIAL PRIMARY KEY,
+	id_usuario INT NOT NULL,
+	nombre_t VARCHAR(30),
+	calle VARCHAR(20),
+	nro_u INT,
+	nro_calle INT,
+	region VARCHAR(30),
+	ciudad VARCHAR(30),
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
 CREATE TABLE IF NOT EXISTS producto (
   id_producto SERIAL PRIMARY KEY, 
   id_tienda INT NOT NULL,
@@ -40,18 +52,6 @@ CREATE TABLE IF NOT EXISTS carrito (
   id_usuario INT NOT NULL,
   estado BOOLEAN NOT NULL,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-CREATE TABLE IF NOT EXISTS tienda (
-	id_tienda SERIAL PRIMARY KEY,
-	id_usuario INT NOT NULL,
-	nombre_t VARCHAR(30),
-	calle VARCHAR(20),
-	nro_u INT,
-	nro_calle INT,
-	region VARCHAR(30),
-	ciudad VARCHAR(30),
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE IF NOT EXISTS compra (
