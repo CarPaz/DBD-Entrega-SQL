@@ -1,8 +1,43 @@
 --SENTENCIAS 
 
 --1.-Agregar un juego de mesa / carta al carrito de compras
+--mostrar todos los carritos y su contenido
+
+--se activa el primer carrito del usuario 7 (revisar caract del estado del carrito)
+UPDATE carrito
+SET estado = TRUE
+WHERE id_usuario = 7
+AND estado = FALSE
+LIMIT 	1; 
+
+--agregar un producto al carrito 
+INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
+VALUES (1,7,1);
+
 
 --2.-Eliminar un juego de mesa/ cartas del carrito de compras
+--mostrar el carrito de compras del usuario 
+SELECT cp.id_carrito_producto, cp.id_carrito, p.id_producto, p.precio, cp.cantidad, p.url_imagen
+FROM carrito_producto cp
+JOIN carrito c ON cp.id_carrito = c.id_carrito
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE c.id_usuario = 7 AND c.estado = FALSE;
+
+--eliminar un producto específico del carrito
+DELETE FROM carrito_producto
+WHERE id_carrito IN (
+  SELECT id_carrito
+  FROM carrito
+  WHERE id_usuario = 7 AND estado = FALSE
+)
+AND id_producto = 6;
+
+--ver contenido actualizado del carrito
+SELECT cp.id_carrito_producto, cp.id_carrito, p.id_producto, p.precio, cp.cantidad
+FROM carrito_producto cp
+JOIN carrito c ON cp.id_carrito = c.id_carrito
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE c.id_usuario = 7 AND c.estado = FALSE;
 
 --3.-Mostrar los juegos de mesa/cartas del carrito de compras 
 

@@ -81,6 +81,7 @@ VALUES
 
 --------------------------------
 --Aqui va carrito
+--El estado en los carritos indica : estado = FALSE → carrito abierto o pendiente (no comprado aún) estado = TRUE → carrito ya finalizado (ya se realizó la compra).
 INSERT INTO carrito (id_usuario, estado)
 VALUES
 	(7, FALSE),
