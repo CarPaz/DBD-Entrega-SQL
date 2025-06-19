@@ -21,6 +21,13 @@ VALUES
 
 -------------------------------
 -- Aqui va ir tienda
+INSERT INTO tienda(id_usuario, nombre_t, calle, nro_u, nro_calle, region, ciudad)
+VALUES
+    (2, 'Falabella', 'Av. Vicuña Mackenna', 110, 7110, 'Región Metropolitana', 'La Florida'),
+	(3, 'Jumbo', 'Barros Arana', 44, 1068, 'Región del Biobío', 'Concepción'),
+	(4, 'Lider', 'Av. San José', 33, 69, 'Región Metropolitana', 'San Bernardo'),
+	(5, 'Weplay', 'Mall Pl. Vespucio', 121, 8240000, 'Región Metropolitana', 'La Florida'),
+	(6, 'Gold Silver', 'Gran Av. José Miguel Carrera', 163, 13694, 'Región Metropolitana', 'San Bernardo');
 -------------------------------
 
 --DATOS TABLA PRODUCTO
@@ -130,4 +137,14 @@ VALUES
 
 --------------------------------
 --Aqui va valoracion
+INSERT INTO valoracion(id_producto, id_usuario, comentario, puntuación, valorado)
+VALUES
+	(1, 7, 'Muy buen producto', 5, TRUE), 
+	(2, 8, 'Pesimo, no lo recomiendo', 1, TRUE),
+	(3, 9, 'Cumple con lo que ofrece', 4, TRUE),
+	(4, 10, 'Muy bueno acorde al precio', 5, TRUE),
+	(5, 8, 'Me llego roto, no lo recomiendo', 1, TRUE),
+	(6, 9, 'No es lo que esperaba', 3, TRUE),
+	(7, 7, 'Muy mala la calidad', 2, TRUE);
+-- Queda a modificar el id_producto porque no estan agregados todavia
 --------------------------------
