@@ -7,14 +7,14 @@ CREATE TABLE IF NOT EXISTS rol (
 
 CREATE TABLE IF NOT EXISTS usuario (
   id_usuario SERIAL PRIMARY KEY,
-  nombre_user VARCHAR(16) NOT NULL,
+  nombre_user VARCHAR(30) NOT NULL,
   correo_user VARCHAR(30) NOT NULL,
   clave VARCHAR(8) NOT NULL,
-  calle VARCHAR(20),
+  calle VARCHAR(40),
   nro_depto INT,
   nro_calle INT,
-  region VARCHAR(30),
-  ciudad VARCHAR(30),
+  region VARCHAR(40),
+  ciudad VARCHAR(40),
   id_rol INT NOT NULL,
   FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
 );
@@ -22,12 +22,12 @@ CREATE TABLE IF NOT EXISTS usuario (
 CREATE TABLE IF NOT EXISTS tienda (
 	id_tienda SERIAL PRIMARY KEY,
 	id_usuario INT NOT NULL,
-	nombre_t VARCHAR(30),
-	calle VARCHAR(20),
+	nombre_t VARCHAR(40),
+	calle VARCHAR(40),
 	nro_u INT,
 	nro_calle INT,
-	region VARCHAR(30),
-	ciudad VARCHAR(30),
+	region VARCHAR(40),
+	ciudad VARCHAR(40),
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
@@ -80,11 +80,11 @@ CREATE TABLE IF NOT EXISTS lista_deseos (
 CREATE TABLE IF NOT EXISTS carta (
 	id_carta SERIAL PRIMARY KEY,
 	id_producto INT NOT NULL,
-	nombre_carta VARCHAR(30),
+	nombre_carta VARCHAR(40),
   descripcion VARCHAR(500),
   año DATE,
-	estado VARCHAR(30),
-	tipo_carta VARCHAR(30),
+	estado VARCHAR(40),
+	tipo_carta VARCHAR(40),
 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
@@ -110,10 +110,10 @@ CREATE TABLE IF NOT EXISTS valoracion (
 CREATE TABLE IF NOT EXISTS juego_de_mesa (
   id_juego SERIAL PRIMARY KEY,
   id_producto INT NOT NULL,
-  nombre_juego VARCHAR(30),
+  nombre_juego VARCHAR(40),
   descripcion VARCHAR(500),
-  tipo_juego VARCHAR(30),
-  categoria VARCHAR(30),
+  tipo_juego VARCHAR(40),
+  categoria VARCHAR(40),
   edad_min INT,
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );

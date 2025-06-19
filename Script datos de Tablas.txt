@@ -130,6 +130,8 @@ VALUES
 
 --------------------------------
 --Aqui va compra
+/*INSERT INTO compra (id_usuario, id_carrito, id_mp, id_tienda)
+Values*/
 --------------------------------
 
 --------------------------------
@@ -138,7 +140,7 @@ VALUES
 
 --------------------------------
 --Aqui va valoracion
-INSERT INTO valoracion(id_producto, id_usuario, comentario, puntuación, valorado)
+INSERT INTO valoracion(id_producto, id_usuario, comentario, puntuacion, valorado)
 VALUES
 	(1, 7, 'Muy buen producto', 5, TRUE), 
 	(2, 8, 'Pesimo, no lo recomiendo', 1, TRUE),
