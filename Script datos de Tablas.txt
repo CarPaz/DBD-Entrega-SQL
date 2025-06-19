@@ -50,3 +50,22 @@ VALUES
 (11, 'Destined Rivals ETB', 'Elite Trainer Box de Pokémon TCG: Destined Rivals. Contiene sobres, dados, fundas y guía.', 'Producto Sellado', 'Coleccionismo', 6),
 (12, 'Destined Rivals Booster Box', 'Caja sellada con 36 sobres de la expansión Destined Rivals.', 'Producto Sellado', 'Competitivo', 6),
 (13, 'Destined Rivals Collection Box', 'Caja coleccionista con cartas promocionales y sobres de Destined Rivals.', 'Producto Sellado', 'Coleccionismo', 6);
+
+
+-- Rol
+INSERT INTO rol (id_rol,administrador, jefe_tienda, cliente) VALUES
+	(1,TRUE,FALSE,FALSE),--admin
+	(2,FALSE,TRUE,FALSE),--jefe
+	(3,FALSE,FALSE,TRUE);--cliente
+--Usuario
+INSERT INTO usuario (id_usuario, nombre_user, correo_user, clave, calle, nro_depto, nro_calle, region, ciudad, id_rol) VALUES
+    (1, 'Antonio', 'antonio1@gmail.com', 'tonito12', 'Calle BR', 31, 1942, 'Región Metropolitana', 'Santiago', 1),
+    (2, 'Pablo', 'pablo420@gmail.com', 'supra321', 'El Gabino', NULL, 13332, 'Región Metropolitana', 'Lo Barnechea', 2),
+    (3, 'Sofia', 'sofic2@gmail.com', 'cifos322', 'Peñablanca', 23, 120, 'Quinta Región', 'Viña del Mar', 2),
+    (4, 'Martin', 'martin873@gmail.com', 'martin90', 'Los Corceles', NULL, 900, 'Región Metropolitana', 'Maipú', 2),
+    (5, 'Valeria', 'vale350@gmail.com', 'valeria7', 'Avillaluz', 33, 12375, 'Región Metropolitana', 'La Pintana', 2),
+    (6, 'Luciano', 'luciano902@gmail.com', 'luci324', 'Sgto. Castañeda', 49, 13574, 'Región Metropolitana', 'La Pintana', 2),
+    (7, 'Bruno', 'bruno647@gmail.com', 'brunito3', 'Covadonga', 22, 1230, 'Quinta Región', 'Quilpué', 3),
+    (8, 'Renata', 'renata844@gmail.com', 'rena982', 'Quinchamali', NULL, 4028, 'Región Metropolitana', 'Macul', 3),
+    (9, 'Juliana', 'juli249@gmail.com', 'juliana2', 'Av. Colon', 55, 2043, 'Quinta Región', 'Valparaíso', 3),
+    (10, 'Esteban', 'esteban942@gmail.com', 'este239', 'Calama', NULL, 2384, 'Séptima Región', 'Curicó', 3);
