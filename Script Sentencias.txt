@@ -2,18 +2,39 @@
 
 --1.-Agregar un juego de mesa / carta al carrito de compras
 --mostrar todos los carritos y su contenido
-
---se activa el primer carrito del usuario 7 (revisar caract del estado del carrito)
-UPDATE carrito
-SET estado = TRUE
-WHERE id_usuario = 7
-AND estado = FALSE
-LIMIT 	1; 
+SELECT 
+  c.id_carrito,
+  c.id_usuario,
+  u.nombre_user AS usuario,
+  cp.id_producto,
+  p.precio,
+  cp.cantidad,
+  p.url_imagen,
+  p.id_tienda,
+  t.nombre_t AS tienda,
+  c.estado AS comprado
+FROM carrito c
+JOIN carrito_producto cp ON c.id_carrito = cp.id_carrito
+JOIN producto p ON cp.id_producto = p.id_producto
+JOIN usuario u ON c.id_usuario = u.id_usuario
+JOIN tienda t ON p.id_tienda = t.id_tienda
+ORDER BY c.id_carrito, cp.id_producto;
 
 --agregar un producto al carrito 
 INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
 VALUES (1,7,1);
 
+-- mostrar carrito despues del cambio
+SELECT 
+  cp.id_carrito_producto,
+  cp.id_carrito,
+  cp.id_producto,
+  p.url_imagen,
+  p.precio,
+  cp.cantidad
+FROM carrito_producto cp
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE cp.id_carrito = 1;
 
 --2.-Eliminar un juego de mesa/ cartas del carrito de compras
 --mostrar el carrito de compras del usuario 
