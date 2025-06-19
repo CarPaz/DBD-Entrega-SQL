@@ -1,71 +1,132 @@
-//Datos tabla producto
+-- datos tabla rol
+INSERT INTO rol (administrador, jefe_tienda, cliente)
+VALUES
+	(TRUE,FALSE,FALSE),--admin
+	(FALSE,TRUE,FALSE),--jefe
+	(FALSE,FALSE,TRUE);--cliente
+-- datos tabla usuario
+INSERT INTO usuario (nombre_user, correo_user, clave, calle, nro_depto, nro_calle, region, ciudad, id_rol)
+VALUES
+    ('Antonio', 'antonio1@gmail.com', 'tonito12', 'Calle BR', 31, 1942, 'Región Metropolitana', 'Santiago', 1),
+    ('Pablo', 'pablo420@gmail.com', 'supra321', 'El Gabino', NULL, 13332, 'Región Metropolitana', 'Lo Barnechea', 2),
+    ('Sofia', 'sofic2@gmail.com', 'cifos322', 'Peñablanca', 23, 120, 'Quinta Región', 'Viña del Mar', 2),
+	('Martin', 'martin873@gmail.com', 'martin90', 'Los Corceles', NULL, 900, 'Región Metropolitana', 'Maipú', 2),
+    ('Valeria', 'vale350@gmail.com', 'valeria7', 'Avillaluz', 33, 12375, 'Región Metropolitana', 'La Pintana', 2),
+    ('Luciano', 'luciano902@gmail.com', 'luci324', 'Sgto. Castañeda', 49, 13574, 'Región Metropolitana', 'La Pintana', 2),
+    ('Bruno', 'bruno647@gmail.com', 'brunito3', 'Covadonga', 22, 1230, 'Quinta Región', 'Quilpué', 3),
+    ('Renata', 'renata844@gmail.com', 'rena982', 'Quinchamali', NULL, 4028, 'Región Metropolitana', 'Macul', 3),
+    ('Juliana', 'juli249@gmail.com', 'juliana2', 'Av. Colon', 55, 2043, 'Quinta Región', 'Valparaíso', 3),
+    ('Esteban', 'esteban942@gmail.com', 'este239', 'Calama', NULL, 2384, 'Séptima Región', 'Curicó', 3);
 
-//Estos datos se ingresan como los primeros datos de las tablas (recordar que los id son de tipo serial)
+-------------------------------
+-- Aqui va ir tienda
+-------------------------------
 
-//Datos de cartas para tabla producto
-//Cartas individuales a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
-(1, 34990, 'https://ejemplo.com/charizard_ex.jpg', 3),
-(2, 15990, 'https://ejemplo.com/pikachu_holo.jpg', 5),
-(3, 19990, 'https://ejemplo.com/mewtwo_vstar.jpg', 4),
-(4, 26990, 'https://ejemplo.com/gardevoir_sir.jpg', 2),
-(5, 29990, 'https://ejemplo.com/blastoise_reverse.jpg', 1);
+	(1, 34990, 'https://ejemplo.com/charizard_ex.jpg', 3),
+	(2, 15990, 'https://ejemplo.com/pikachu_holo.jpg', 5),
+	(3, 19990, 'https://ejemplo.com/mewtwo_vstar.jpg', 4),
+	(4, 26990, 'https://ejemplo.com/gardevoir_sir.jpg', 2),
+	(5, 29990, 'https://ejemplo.com/blastoise_reverse.jpg', 1);
 
-//juegos de mesa a producto
+--Datos tabla producto
+--Estos datos se ingresan como los primeros datos de las tablas (recordar que los id son de tipo serial)
+--Datos de cartas para tabla producto
+--Cartas individuales a producto
+--juegos de mesa a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
-(1, 34990, 'https://ejemplo.com/catan.jpg', 12),
-(2, 22990, 'https://ejemplo.com/carcassonne.jpg', 18),
-(3, 29990, 'https://ejemplo.com/aventureros.jpg', 10),
-(4, 19990, 'https://ejemplo.com/monopoly.jpg', 20),
-(4, 25990, 'https://ejemplo.com/dixit.jpg', 16);
+	(1, 34990, 'https://ejemplo.com/catan.jpg', 12),
+	(2, 22990, 'https://ejemplo.com/carcassonne.jpg', 18),
+	(3, 29990, 'https://ejemplo.com/aventureros.jpg', 10),
+	(4, 19990, 'https://ejemplo.com/monopoly.jpg', 20),
+	(4, 25990, 'https://ejemplo.com/dixit.jpg', 16);
 
-//sellado de cartas a producto
+--sellado de cartas a producto
 INSERT INTO producto (id_tienda, precio, url_imagen, stock)
 VALUES 
-(1, 69990, 'https://ejemplo.com/etb_destined_rivals.jpg', 6),
-(2, 139990, 'https://ejemplo.com/boosterbox_destined.jpg', 4),
-(3, 89990, 'https://ejemplo.com/collection_destined.jpg', 5);
+	(1, 69990, 'https://ejemplo.com/etb_destined_rivals.jpg', 6),
+	(2, 139990, 'https://ejemplo.com/boosterbox_destined.jpg', 4),
+	(3, 89990, 'https://ejemplo.com/collection_destined.jpg', 5);
 
-
-//cartas individuales a carta
+--cartas individuales a carta
 INSERT INTO carta (id_producto, nombre_carta, descripcion, año, estado, tipo_carta)
 VALUES
-(1, 'Charizard EX', 'Carta Pokémon edición especial Charizard EX 2023.', '2023-06-10', 'Near Mint', 'SIR'),
-(2, 'Pikachu Holo', 'Carta holográfica Pikachu del set Celebrations.', '2021-10-08', 'Lightly Played', 'Holo'),
-(3, 'Mewtwo VSTAR', 'Carta poderosa Mewtwo VSTAR de Crown Zenith.', '2023-01-15', 'Mint', 'Ultra Rare'),
-(4, 'Gardevoir EX', 'Carta Gardevoir ilustración especial rara.', '2023-07-20', 'Near Mint', 'SIR'),
-(5, 'Blastoise Reverse-Holo', 'Carta Blastoise Reverse-Holo del Base Set.', '1999-11-01', 'Moderately Played', 'Reverse-Holo');
+	(1, 'Charizard EX', 'Carta Pokémon edición especial Charizard EX 2023.', '2023-06-10', 'Near Mint', 'SIR'),
+	(2, 'Pikachu Holo', 'Carta holográfica Pikachu del set Celebrations.', '2021-10-08', 'Lightly Played', 'Holo'),
+	(3, 'Mewtwo VSTAR', 'Carta poderosa Mewtwo VSTAR de Crown Zenith.', '2023-01-15', 'Mint', 'Ultra Rare'),
+	(4, 'Gardevoir EX', 'Carta Gardevoir ilustración especial rara.', '2023-07-20', 'Near Mint', 'SIR'),
+	(5, 'Blastoise Reverse-Holo', 'Carta Blastoise Reverse-Holo del Base Set.', '1999-11-01', 'Moderately Played', 'Reverse-Holo');
 
-//juegos de mesa y selladode cartas a tabla juegos de mesa
+--juegos de mesa y sellado de cartas a tabla juegos de mesa
 INSERT INTO juego_de_mesa (id_producto, nombre_juego, descripcion, tipo_juego, categoria, edad_min)
 VALUES
-(6, 'Catan', 'Juego de estrategia para colonizar una isla con recursos.', 'Estrategia', 'Competitivo', 10),
-(7, 'Carcassonne', 'Juego de losetas y conquista de territorio medieval.', 'Colocación de losetas', 'Familiar', 8),
-(8, 'Aventureros al Tren: Europa', 'Conecta ciudades mediante rutas ferroviarias.', 'Ruta', 'Viajes', 8),
-(9, 'Monopoly Clásico', 'Clásico de bienes raíces y finanzas.', 'Economía', 'Clásico', 8),
-(10, 'Dixit', 'Juego narrativo de ilustraciones e imaginación.', 'Narrativo', 'Creativo', 8),
+	(6, 'Catan', 'Juego de estrategia para colonizar una isla con recursos.', 'Estrategia', 'Competitivo', 10),
+	(7, 'Carcassonne', 'Juego de losetas y conquista de territorio medieval.', 'Colocación de losetas', 'Familiar', 8),
+	(8, 'Aventureros al Tren: Europa', 'Conecta ciudades mediante rutas ferroviarias.', 'Ruta', 'Viajes', 8),
+	(9, 'Monopoly Clásico', 'Clásico de bienes raíces y finanzas.', 'Economía', 'Clásico', 8),
+	(10, 'Dixit', 'Juego narrativo de ilustraciones e imaginación.', 'Narrativo', 'Creativo', 8),
+	(11, 'Destined Rivals ETB', 'Elite Trainer Box de Pokémon TCG: Destined Rivals. Contiene sobres, dados, fundas y guía.', 'Producto Sellado', 'Coleccionismo', 6),
+	(12, 'Destined Rivals Booster Box', 'Caja sellada con 36 sobres de la expansión Destined Rivals.', 'Producto Sellado', 'Competitivo', 6),
+	(13, 'Destined Rivals Collection Box', 'Caja coleccionista con cartas promocionales y sobres de Destined Rivals.', 'Producto Sellado', 'Coleccionismo', 6);
 
-(11, 'Destined Rivals ETB', 'Elite Trainer Box de Pokémon TCG: Destined Rivals. Contiene sobres, dados, fundas y guía.', 'Producto Sellado', 'Coleccionismo', 6),
-(12, 'Destined Rivals Booster Box', 'Caja sellada con 36 sobres de la expansión Destined Rivals.', 'Producto Sellado', 'Competitivo', 6),
-(13, 'Destined Rivals Collection Box', 'Caja coleccionista con cartas promocionales y sobres de Destined Rivals.', 'Producto Sellado', 'Coleccionismo', 6);
+--------------------------------
+--Aqui va carrito
+INSERT INTO carrito (id_usuario, estado)
+VALUES
+	(7, FALSE),
+	(7, FALSE),
+	(7, FALSE),
+	(8, FALSE),
+	(8, FALSE),
+	(9, FALSE),
+	(9, FALSE),
+	(9, FALSE),
+	(10, FALSE);
+--------------------------------
 
+--------------------------------
+--Aqui va carrito_producto
+INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
+VALUES
+	(1, 1, 1),
+	(1, 6, 1),
+	(2, 2, 2),
+	(3, 5, 1),
+	(4, 3, 1),
+	(4, 8, 1),
+	(5, 1, 1),
+	(6, 4, 1),
+	(7, 11, 1),
+	(7, 6, 1),
+	(8, 9, 1),
+	(8, 10, 1),
+	(9, 3, 1),
+	(9, 8, 1),
+	(9, 13, 3);
+--------------------------------
 
--- Rol
-INSERT INTO rol (id_rol,administrador, jefe_tienda, cliente) VALUES
-	(1,TRUE,FALSE,FALSE),--admin
-	(2,FALSE,TRUE,FALSE),--jefe
-	(3,FALSE,FALSE,TRUE);--cliente
---Usuario
-INSERT INTO usuario (id_usuario, nombre_user, correo_user, clave, calle, nro_depto, nro_calle, region, ciudad, id_rol) VALUES
-    (1, 'Antonio', 'antonio1@gmail.com', 'tonito12', 'Calle BR', 31, 1942, 'Región Metropolitana', 'Santiago', 1),
-    (2, 'Pablo', 'pablo420@gmail.com', 'supra321', 'El Gabino', NULL, 13332, 'Región Metropolitana', 'Lo Barnechea', 2),
-    (3, 'Sofia', 'sofic2@gmail.com', 'cifos322', 'Peñablanca', 23, 120, 'Quinta Región', 'Viña del Mar', 2),
-    (4, 'Martin', 'martin873@gmail.com', 'martin90', 'Los Corceles', NULL, 900, 'Región Metropolitana', 'Maipú', 2),
-    (5, 'Valeria', 'vale350@gmail.com', 'valeria7', 'Avillaluz', 33, 12375, 'Región Metropolitana', 'La Pintana', 2),
-    (6, 'Luciano', 'luciano902@gmail.com', 'luci324', 'Sgto. Castañeda', 49, 13574, 'Región Metropolitana', 'La Pintana', 2),
-    (7, 'Bruno', 'bruno647@gmail.com', 'brunito3', 'Covadonga', 22, 1230, 'Quinta Región', 'Quilpué', 3),
-    (8, 'Renata', 'renata844@gmail.com', 'rena982', 'Quinchamali', NULL, 4028, 'Región Metropolitana', 'Macul', 3),
-    (9, 'Juliana', 'juli249@gmail.com', 'juliana2', 'Av. Colon', 55, 2043, 'Quinta Región', 'Valparaíso', 3),
-    (10, 'Esteban', 'esteban942@gmail.com', 'este239', 'Calama', NULL, 2384, 'Séptima Región', 'Curicó', 3);
+--------------------------------
+--Aqui va lista_de_deseos
+--------------------------------
+
+--------------------------------
+--Aqui va lista_producto
+--------------------------------
+
+--------------------------------
+--Aqui va medio_de_pago
+--------------------------------
+
+--------------------------------
+--Aqui va compra
+--------------------------------
+
+--------------------------------
+--Aqui va compra_producto
+--------------------------------
+
+--------------------------------
+--Aqui va valoracion
+--------------------------------
