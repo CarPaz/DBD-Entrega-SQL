@@ -126,10 +126,10 @@ CREATE TABLE IF NOT EXISTS carrito_producto (
 );
 
 CREATE TABLE IF NOT EXISTS compra_producto (
-  id_compra_producto SERIAL PRIMARY KEY,
   id_compra INT NOT NULL,
   id_producto INT NOT NULL,
   cantidad_compra INT NOT NULL,
+  PRIMARY KEY (id_compra, id_producto),
   FOREIGN KEY (id_compra) REFERENCES compra(id_compra),
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
