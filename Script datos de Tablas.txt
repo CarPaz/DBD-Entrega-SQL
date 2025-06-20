@@ -85,14 +85,14 @@ VALUES
 INSERT INTO carrito (id_usuario, estado)
 VALUES
 	(7, FALSE),
-	(7, FALSE),
-	(7, FALSE),
+	(7, TRUE),
+	(7, TRUE),
 	(8, FALSE),
 	(8, FALSE),
-	(9, FALSE),
-	(9, FALSE),
-	(9, FALSE),
-	(10, FALSE);
+	(9, TRUE),
+	(9, TRUE),
+	(9, TRUE),
+	(10, TRUE);
 --------------------------------
 
 --------------------------------
