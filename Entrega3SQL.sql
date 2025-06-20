@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS compra (
 CREATE TABLE IF NOT EXISTS lista_deseos (
   id_lista SERIAL PRIMARY KEY,
   id_usuario INT NOT NULL,
-  id_producto INT NOT NULL,
   total_lista INT,
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
@@ -89,9 +88,9 @@ CREATE TABLE IF NOT EXISTS carta (
 );
 
 CREATE TABLE IF NOT EXISTS lista_producto (
-	id_lista_producto SERIAL PRIMARY KEY,
 	id_lista INT NOT NULL,
 	id_producto INT NOT NULL,
+  PRIMARY KEY (id_lista, id_producto),
 	FOREIGN KEY (id_lista) REFERENCES lista_deseos(id_lista),
 	FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
@@ -119,10 +118,10 @@ CREATE TABLE IF NOT EXISTS juego_de_mesa (
 );
 
 CREATE TABLE IF NOT EXISTS carrito_producto (
-  id_carrito_producto SERIAL PRIMARY KEY,
   id_carrito INT NOT NULL,
   id_producto INT NOT NULL,
   cantidad INT NOT NULL,
+  PRIMARY KEY (id_carrito, id_producto),
   FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito),
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
