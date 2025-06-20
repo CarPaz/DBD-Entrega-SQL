@@ -131,6 +131,25 @@ INNER JOIN producto AS pro ON pro.id_producto = capr.id_producto
 INNER JOIN juego_de_mesa AS jm ON jm.id_producto = capr.id_producto
 WHERE usu.region = 'Quinta Región' AND ca.estado = true
 
---6.- Mostrar ranking de los productos con mas ventan 
+--6.- Mostrar ranking de los productos con mas ventan
+--hace la tabla con el id, nombre y suma de la cantidad de cartas vendidas
+SELECT c.id_producto, c.nombre_carta as nombre_producto, SUM(cp.cantidad_compra) as vendido
+FROM compra_producto cp JOIN carta c ON cp.id_producto = c.id_producto 
+JOIN producto p ON c.id_producto = p.id_producto
+JOIN carrito_producto capr ON p.id_producto = capr.id_producto
+JOIN carrito ca ON capr.id_carrito = ca.id_carrito
+WHERE ca.estado = TRUE
+GROUP BY c.id_producto, nombre_producto
+--une la tabla recien hecha con la que se hará a continuacion
+UNION
+--hace la tabla con el id, nombre y suma de la cantidad de juegos de mesa vendidos
+SELECT j.id_producto, j.nombre_juego as nombre_producto, SUM(cp.cantidad_compra) as vendido
+FROM compra_producto cp JOIN juego_de_mesa j ON cp.id_producto = j.id_producto
+JOIN producto p ON j.id_producto = p.id_producto
+JOIN carrito_producto capr ON p.id_producto = capr.id_producto
+JOIN carrito ca ON capr.id_carrito = ca.id_carrito
+WHERE ca.estado = TRUE
+GROUP BY j.id_producto, nombre_producto
+ORDER BY vendido DESC;
 
 --7.- Mostrar lista de deseos de un usuario
