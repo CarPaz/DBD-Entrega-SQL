@@ -153,3 +153,25 @@ GROUP BY j.id_producto, nombre_producto
 ORDER BY vendido DESC;
 
 --7.- Mostrar lista de deseos de un usuario
+-- selecciona los datos a mostrar, el nombre del producto lo toma en base de la tabla en la que se encuentra el producto, si es que es carta o juego de mesa
+select ld.id_lista , u.id_usuario, u.nombre_user nombre_del_usuario, p.id_producto, 
+	case 
+		when c.nombre_carta is not null then c.nombre_carta
+		else jm.nombre_juego
+	end as nombre_del_producto,
+	p.precio,
+	p.url_imagen
+-- junta todas las tablas necesarias para obtener todos los valores requeridos a mostrar
+from lista_deseos ld join lista_producto lp on ld.id_lista = lp.id_lista 
+join usuario u on ld.id_usuario = u.id_usuario
+join producto p on lp.id_producto = p.id_producto
+left join carta c on p.id_producto = c.id_producto
+left join juego_de_mesa jm on p.id_producto = jm.id_producto
+-- esto es para que muestre solo de un usuario y no muestre la lista de deseos de todos
+where u.id_usuario = ( 
+	select id_usuario
+	from lista_deseos
+	limit 1
+)
+group by ld.id_lista, u.id_usuario, u.nombre_user, p.id_producto, c.nombre_carta, jm.nombre_juego
+order by id_usuario;
