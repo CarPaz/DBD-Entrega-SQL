@@ -63,13 +63,17 @@ WHERE cp.id_carrito = 1;
 --mostrar todos los carritos y su contenido
 SELECT 
   c.id_carrito,
-  c.id_usuario,
   u.nombre_user AS usuario,
-  cp.id_producto,
+  j.nombre_juego,
+  ca.nombre_carta,
+  CASE 
+    WHEN j.id_juego IS NOT NULL THEN 'Juego de Mesa'
+    WHEN ca.id_carta IS NOT NULL THEN 'Carta'
+    ELSE 'Otro'
+  END AS tipo_producto,
   p.precio,
   cp.cantidad,
   p.url_imagen,
-  p.id_tienda,
   t.nombre_t AS tienda,
   c.estado AS comprado
 FROM carrito c
@@ -77,7 +81,9 @@ JOIN carrito_producto cp ON c.id_carrito = cp.id_carrito
 JOIN producto p ON cp.id_producto = p.id_producto
 JOIN usuario u ON c.id_usuario = u.id_usuario
 JOIN tienda t ON p.id_tienda = t.id_tienda
-ORDER BY c.id_carrito, cp.id_producto;
+LEFT JOIN juego_de_mesa j ON p.id_producto = j.id_producto
+LEFT JOIN carta ca ON p.id_producto = ca.id_producto
+ORDER BY c.id_carrito, j.nombre_juego, ca.nombre_carta, tipo_producto;
 
 
 
