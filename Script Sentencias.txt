@@ -2,7 +2,7 @@
 
 --1.-Agregar un juego de mesa / carta al carrito de compras
 
---agregar un producto al carrito por id )si ya hay de este producto se le aumenta la cantidad)
+--agregar un producto al carrito por id (si ya hay de este producto se le aumenta la cantidad)
 INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
 VALUES (1, 7, 1)
 ON CONFLICT (id_carrito, id_producto)
@@ -109,6 +109,27 @@ GROUP BY cp.id_carrito, c.id_usuario, u.nombre_user
 ORDER BY c.id_usuario;
 
 --5.- Mostrar todos los juegos de mesa y cartas que se vendan en una ubicacion geografica especifica 
+-- ejemplo para compras hechas en la quinta región
+SELECT 
+cr.nombre_carta AS nombre_producto, pro.url_imagen,capr.cantidad,usu.region
+
+FROM carrito AS ca
+INNER JOIN carrito_producto AS capr ON ca.id_carrito = capr.id_carrito
+INNER JOIN usuario AS usu ON usu.id_usuario = ca.id_usuario
+INNER JOIN producto AS pro ON pro.id_producto = capr.id_producto
+INNER JOIN carta AS cr ON cr.id_producto = capr.id_producto
+WHERE usu.region = 'Quinta Región' AND ca.estado = true
+
+UNION
+
+SELECT jm.nombre_juego AS nombre_producto,pro.url_imagen,capr.cantidad,usu.region
+
+FROM carrito AS ca
+INNER JOIN carrito_producto AS capr ON ca.id_carrito = capr.id_carrito
+INNER JOIN usuario AS usu ON usu.id_usuario = ca.id_usuario
+INNER JOIN producto AS pro ON pro.id_producto = capr.id_producto
+INNER JOIN juego_de_mesa AS jm ON jm.id_producto = capr.id_producto
+WHERE usu.region = 'Quinta Región' AND ca.estado = true
 
 --6.- Mostrar ranking de los productos con mas ventan 
 
