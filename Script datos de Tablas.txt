@@ -23,11 +23,11 @@ VALUES
 -- Aqui va ir tienda
 INSERT INTO tienda(id_usuario, nombre_t, calle, nro_u, nro_calle, region, ciudad)
 VALUES
-    (2, 'Falabella', 'Av. Vicuña Mackenna', 110, 7110, 'Región Metropolitana', 'La Florida'),
-	(3, 'Jumbo', 'Barros Arana', 44, 1068, 'Región del Biobío', 'Concepción'),
-	(4, 'Lider', 'Av. San José', 33, 69, 'Región Metropolitana', 'San Bernardo'),
-	(5, 'Weplay', 'Mall Pl. Vespucio', 121, 8240000, 'Región Metropolitana', 'La Florida'),
-	(6, 'Gold Silver', 'Gran Av. José Miguel Carrera', 163, 13694, 'Región Metropolitana', 'San Bernardo');
+    (2, 'ShopOnline', 'Av. Vicuña Mackenna', 110, 7110, 'Región Metropolitana', 'La Florida'),
+	(3, 'MyGameShop', 'Barros Arana', 44, 1068, 'Región del Biobío', 'Concepción'),
+	(4, 'SoloJuegos', 'Av. San José', 33, 69, 'Región Metropolitana', 'San Bernardo'),
+	(5, 'SusShop', 'Mall Pl. Vespucio', 121, 8240000, 'Región Metropolitana', 'La Florida'),
+	(6, 'CardAndTable', 'Gran Av. José Miguel Carrera', 163, 13694, 'Región Metropolitana', 'San Bernardo');
 -------------------------------
 
 --DATOS TABLA PRODUCTO
