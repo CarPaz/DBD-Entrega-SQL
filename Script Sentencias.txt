@@ -1,6 +1,65 @@
 --SENTENCIAS 
 
 --1.-Agregar un juego de mesa / carta al carrito de compras
+
+--agregar un producto al carrito por id )si ya hay de este producto se le aumenta la cantidad)
+INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
+VALUES (1, 7, 1)
+ON CONFLICT (id_carrito, id_producto)
+DO UPDATE SET cantidad = carrito_producto.cantidad + EXCLUDED.cantidad;
+
+--agregar un producto al carrito por nombre del producto (si ya hay de este producto se le aumenta la cantidad)
+INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
+VALUES (1,(SELECT id_producto FROM juego_de_mesa WHERE nombre_juego = 'Catan' LIMIT 1), 1)
+ON CONFLICT (id_carrito, id_producto) DO UPDATE
+SET cantidad = carrito_producto.cantidad + 1;
+
+--mostrar el contenido del carrito 1 despues del insert
+SELECT 
+  cp.id_carrito,
+  p.id_producto,
+  p.url_imagen,
+  p.precio,
+  cp.cantidad
+FROM carrito_producto cp
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE cp.id_carrito = 1;
+
+--2.-Eliminar un juego de mesa/ cartas del carrito de compras
+
+-- Suponiendo que queremos eliminar el juego catan sin saber su id 
+-- Eliminar "Catan" del carrito 1
+DELETE FROM carrito_producto
+WHERE id_carrito = 1
+  AND id_producto = (
+    SELECT p.id_producto
+    FROM producto p
+    JOIN juego_de_mesa j ON p.id_producto = j.id_producto
+    WHERE j.nombre_juego = 'Catan'
+    LIMIT 1
+  );
+
+-- Mostrar carrito actualizado del usuario 7 (carritos no comprados)
+SELECT cp.id_carrito, p.id_producto, p.precio, cp.cantidad
+FROM carrito_producto cp
+JOIN carrito c ON cp.id_carrito = c.id_carrito
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE cp.id_carrito = 1 AND c.id_usuario = 7 AND c.estado = FALSE;
+
+
+--3.-Mostrar los juegos de mesa/cartas del carrito de compras 
+-- Mostrar contenido actual del carrito 1
+SELECT 
+  cp.id_carrito,
+  p.id_producto,
+  p.url_imagen,
+  p.precio,
+  cp.cantidad
+FROM carrito_producto cp
+JOIN producto p ON cp.id_producto = p.id_producto
+WHERE cp.id_carrito = 1;
+
+--mostrar el contenido de todos los carritos agrupados por carrito y producto
 --mostrar todos los carritos y su contenido
 SELECT 
   c.id_carrito,
@@ -20,46 +79,7 @@ JOIN usuario u ON c.id_usuario = u.id_usuario
 JOIN tienda t ON p.id_tienda = t.id_tienda
 ORDER BY c.id_carrito, cp.id_producto;
 
---agregar un producto al carrito 
-INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
-VALUES (1,7,1);
 
---mostrar el contenido del carrito 1 despues del insert
-SELECT 
-  cp.id_carrito,
-  p.id_producto,
-  p.url_imagen,
-  p.precio,
-  cp.cantidad
-FROM carrito_producto cp
-JOIN producto p ON cp.id_producto = p.id_producto
-WHERE cp.id_carrito = 1;
-
---2.-Eliminar un juego de mesa/ cartas del carrito de compras
---mostrar el carrito de compras del usuario 
-SELECT cp.id_carrito_producto, cp.id_carrito, p.id_producto, p.precio, cp.cantidad, p.url_imagen
-FROM carrito_producto cp
-JOIN carrito c ON cp.id_carrito = c.id_carrito
-JOIN producto p ON cp.id_producto = p.id_producto
-WHERE c.id_usuario = 7 AND c.estado = FALSE;
-
---eliminar un producto específico del carrito
-DELETE FROM carrito_producto
-WHERE id_carrito IN (
-  SELECT id_carrito
-  FROM carrito
-  WHERE id_usuario = 7 AND estado = FALSE
-)
-AND id_producto = 6;
-
---ver contenido actualizado del carrito
-SELECT cp.id_carrito_producto, cp.id_carrito, p.id_producto, p.precio, cp.cantidad
-FROM carrito_producto cp
-JOIN carrito c ON cp.id_carrito = c.id_carrito
-JOIN producto p ON cp.id_producto = p.id_producto
-WHERE c.id_usuario = 7 AND c.estado = FALSE;
-
---3.-Mostrar los juegos de mesa/cartas del carrito de compras 
 
 --4.-Mostrar el precio total a pagar por el carrito de compras 
 
