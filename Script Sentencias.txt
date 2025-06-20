@@ -133,24 +133,22 @@ WHERE usu.region = 'Quinta Región' AND ca.estado = true
 
 --6.- Mostrar ranking de los productos con mas ventan
 --hace la tabla con el id, nombre y suma de la cantidad de cartas vendidas
-SELECT c.id_producto, c.nombre_carta as nombre_producto, SUM(cp.cantidad_compra) as vendido
-FROM compra_producto cp JOIN carta c ON cp.id_producto = c.id_producto 
-JOIN producto p ON c.id_producto = p.id_producto
-JOIN carrito_producto capr ON p.id_producto = capr.id_producto
-JOIN carrito ca ON capr.id_carrito = ca.id_carrito
-WHERE ca.estado = TRUE
-GROUP BY c.id_producto, nombre_producto
+select c.id_producto, c.nombre_carta as nombre_producto, cp.cantidad as vendido
+FROM carta c
+Join carrito_producto cp on c.id_producto = cp.id_producto
+Join carrito ca on cp.id_carrito = ca.id_carrito
+join producto p on c.id_producto = p.id_producto
+where ca.estado = TRUE
 --une la tabla recien hecha con la que se hará a continuacion
 UNION
 --hace la tabla con el id, nombre y suma de la cantidad de juegos de mesa vendidos
-SELECT j.id_producto, j.nombre_juego as nombre_producto, SUM(cp.cantidad_compra) as vendido
-FROM compra_producto cp JOIN juego_de_mesa j ON cp.id_producto = j.id_producto
-JOIN producto p ON j.id_producto = p.id_producto
-JOIN carrito_producto capr ON p.id_producto = capr.id_producto
-JOIN carrito ca ON capr.id_carrito = ca.id_carrito
-WHERE ca.estado = TRUE
-GROUP BY j.id_producto, nombre_producto
-ORDER BY vendido DESC;
+select j.id_producto, j.nombre_juego as nombre_producto, cp.cantidad as vendido
+FROM juego_de_mesa j
+Join carrito_producto cp on j.id_producto = cp.id_producto
+Join carrito ca on cp.id_carrito = ca.id_carrito
+join producto p on j.id_producto = p.id_producto
+where ca.estado = TRUE
+order by vendido DESC, id_producto;
 
 --7.- Mostrar lista de deseos de un usuario
 -- selecciona los datos a mostrar, el nombre del producto lo toma en base de la tabla en la que se encuentra el producto, si es que es carta o juego de mesa
