@@ -24,11 +24,10 @@ ORDER BY c.id_carrito, cp.id_producto;
 INSERT INTO carrito_producto (id_carrito, id_producto, cantidad)
 VALUES (1,7,1);
 
--- mostrar carrito despues del cambio
+--mostrar el contenido del carrito 1 despues del insert
 SELECT 
-  cp.id_carrito_producto,
   cp.id_carrito,
-  cp.id_producto,
+  p.id_producto,
   p.url_imagen,
   p.precio,
   cp.cantidad
