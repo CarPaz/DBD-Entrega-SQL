@@ -72,8 +72,7 @@ CREATE TABLE IF NOT EXISTS lista_deseos (
   id_lista SERIAL PRIMARY KEY,
   id_usuario INT NOT NULL,
   total_lista INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 CREATE TABLE IF NOT EXISTS carta (
