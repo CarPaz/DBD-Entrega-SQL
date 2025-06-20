@@ -152,24 +152,24 @@ ORDER BY vendido DESC, id_producto;
 
 --7.- Mostrar lista de deseos de un usuario
 -- selecciona los datos a mostrar, el nombre del producto lo toma en base de la tabla en la que se encuentra el producto, si es que es carta o juego de mesa
-select ld.id_lista , u.id_usuario, u.nombre_user nombre_del_usuario, p.id_producto, 
-	case 
-		when c.nombre_carta is not null then c.nombre_carta
-		else jm.nombre_juego
-	end as nombre_del_producto,
+SELECT ld.id_lista , u.id_usuario, u.nombre_user nombre_del_usuario, p.id_producto, 
+	CASE 
+		WHEN c.nombre_carta IS NOT NULL THEN c.nombre_carta
+		ELSE jm.nombre_juego
+	END as nombre_del_producto,
 	p.precio,
 	p.url_imagen
 -- junta todas las tablas necesarias para obtener todos los valores requeridos a mostrar
-from lista_deseos ld join lista_producto lp on ld.id_lista = lp.id_lista 
-join usuario u on ld.id_usuario = u.id_usuario
-join producto p on lp.id_producto = p.id_producto
-left join carta c on p.id_producto = c.id_producto
-left join juego_de_mesa jm on p.id_producto = jm.id_producto
+FROM lista_deseos ld JOIN lista_producto lp ON ld.id_lista = lp.id_lista 
+JOIN usuario u ON ld.id_usuario = u.id_usuario
+JOIN producto p ON lp.id_producto = p.id_producto
+LEFT JOIN carta c ON p.id_producto = c.id_producto
+LEFT JOIN juego_de_mesa jm ON p.id_producto = jm.id_producto
 -- esto es para que muestre solo de un usuario y no muestre la lista de deseos de todos
-where u.id_usuario = ( 
-	select id_usuario
-	from lista_deseos
-	limit 1
+WHERE u.id_usuario = ( 
+	SELECT id_usuario
+	FROM lista_deseos
+	LIMIT 1
 )
-group by ld.id_lista, u.id_usuario, u.nombre_user, p.id_producto, c.nombre_carta, jm.nombre_juego
-order by id_usuario;
+GROUP BY ld.id_lista, u.id_usuario, u.nombre_user, p.id_producto, c.nombre_carta, jm.nombre_juego
+ORDER BY id_usuario;
